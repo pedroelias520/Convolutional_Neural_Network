@@ -1,24 +1,20 @@
+import numpy as np
 from tkinter import *
 from tkinter.filedialog import askopenfilename
 from PIL import Image, ImageTk
-from keras.models import Sequential
-from keras.layers.normalization import BatchNormalization
-from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
-from keras.preprocessing import image
-from keras.preprocessing.image import ImageDataGenerator
-import numpy as np
+from tensorflow import keras
+from tensorflow.keras import models
+from tensorflow.keras import layers
+from tensorflow.keras import preprocessing
+
 
 
 class Interface():
 
     def Captura(self):
         self.filename = askopenfilename()
-
-
         self.image = Image.open(self.filename)
-
         self.photo = ImageTk.PhotoImage(self.image)
-
         label = Label(self.root, image=self.photo).grid(row=1, column=0, padx=15, pady=5, rowspan=3)
         label.image = self.photo
 
