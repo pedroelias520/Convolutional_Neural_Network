@@ -3,10 +3,11 @@ from tkinter import *
 from tkinter.filedialog import askopenfilename
 from PIL import Image, ImageTk
 from tensorflow import keras
-from tensorflow.keras import models
-from tensorflow.keras import layers
-from tensorflow.keras import preprocessing
-
+from keras.models import Sequential
+from keras.layers.normalization import BatchNormalization
+from keras.layers import Conv2D,MaxPooling2D, Flatten, Dense
+from keras.preprocessing import image 
+from keras.preprocessing.image import ImageDataGenerator 
 
 
 class Interface():
@@ -56,14 +57,14 @@ class Interface():
                                                             class_mode = 'binary')
 
         # Criação de bases de teste
-        base_teste = gerador_treinamento.flow_from_directory('Databse/Teste',
+        base_teste = gerador_treinamento.flow_from_directory('Database/Test',
                                                             target_size = (64,64),
                                                             batch_size = 32,
                                                             class_mode = 'binary')
 
         #Inicialização do treinamento
-        self.classificador.fit_generator(base_treinamento, steps_per_epoch=20,
-                                    epochs=3, validation_data=base_teste,
+        self.classificador.fit_generator(base_treinamento, steps_per_epoch=50,
+                                    epochs=10, validation_data=base_teste,
                                     validation_steps=20)
         #Contador de treino
         self.contador = 1
