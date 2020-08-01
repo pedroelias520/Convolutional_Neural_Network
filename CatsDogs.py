@@ -88,11 +88,11 @@ class Interface():
     
     
         if previsao > 0.5:
-            print('A imagem é de um gato')
-            Label(self.root, text='A imagem é de um gato').grid(row=1, column=0)
-        elif previsao < 0.5:
             print('A imagem é de um cachorro')
             Label(self.root, text='A imagem é de um cachorro').grid(row=1, column=0)
+        elif previsao < 0.5:
+            print('A imagem é de um gato')
+            Label(self.root, text='A imagem é de um gato').grid(row=1, column=0)
             
 
     def __init__(self):
