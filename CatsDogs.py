@@ -12,6 +12,7 @@ from keras.preprocessing.image import ImageDataGenerator
 
 class Interface():
 
+    #AMOSTRAGEM DE IMAGENS CAPTURADAS
     def Captura(self):
         self.filename = askopenfilename()
         self.image = Image.open(self.filename)
@@ -65,15 +66,14 @@ class Interface():
         #Inicialização do treinamento
         self.classificador.fit_generator(base_treinamento, steps_per_epoch=50,
                                     epochs=10, validation_data=base_teste,
-                                    validation_steps=20)
+                                    validation_steps=50)
         #Contador de treino
         self.contador = 1
 
 
     def ClassificarImagens(self):
 
-        imagem_teste = image.load_img(self.filename,
-                                   target_size = (64, 64))
+        imagem_teste = image.load_img(self.filename,target_size = (64, 64))
           
      
         imagem_teste = image.img_to_array(imagem_teste)
